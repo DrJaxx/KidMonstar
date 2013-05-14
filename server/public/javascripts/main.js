@@ -10,9 +10,7 @@
 	})
 
 	socket.on('movement', function(position,bgp,sensMarche){
-		console.log(position['bgp'][sensMarche][bgp])
 		console.log(sensMarche)
-		console.log(bgp)
 		$(document.querySelector('.perso')).css({'background-color':position['color'],'bottom':position['y'],'margin-left':position['x'],'background-position':position['bgp'][sensMarche][bgp]})
 		socket.emit('infoWindow',{height:window.innerHeight,width:window.innerWidth});
 	})

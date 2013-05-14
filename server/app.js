@@ -49,35 +49,52 @@ var position = {
 			2:'36% 33%%',
 			3:'65% 33%%',
 			4:'94% 33%%'
-			}
+			},
+		'arret':{
+			1:'8% 1%'
+		}
 		}
 	};
 var limite = {};
 var sio = io.listen(httpServer);
-
+sio.set('log level', 1);
 sio.sockets.on('connection', function(socket){
 	console.log('Websocket has been connected');
 	socket.emit('init', position);
 	socket.on('infoWindow',function(req){
 		limite = {
 			height:req.height,
-			width:(req.width-30)
+			width:(req.width-35)
 		}
 	})
 })
 
 var sens = true;
-var bgp = 0;
+var bgp = 1;
 var sensMarche = '';
+var stop = false;
+var iStop = 0;
 
 setInterval(function(){
-	console.log(limite)
-	if(limite.width != null && limite.width==position['x']){
+	if((Math.round(Math.random()*1000) == 9 ) || stop === true){
+		sensMarche = 'arret';
+		bgp = 1;
+		stop = true;
+		console.log(stop);
+		console.log(iStop);
+		if(iStop<100){
+			iStop += 1;
+		}else{
+			iStop = 0;
+			stop = false;
+			sensMarche = ''
+		}
+	}else if(limite.width != null && limite.width==position['x']){
 		position['x'] -= 1;
-		sensMarche = 'droite';
+		sensMarche = 'gauche';
 		if(position['x']%10 == 0){
-			if(bgp>4){
-				bgp = 0;
+			if(bgp>3){
+				bgp = 1;
 			}else{
 				bgp += 1;
 			}
@@ -85,13 +102,35 @@ setInterval(function(){
 		sens = false;
 	}else if(limite.width != null && limite.width>0 && sens == true){
 		position['x'] += 1;
-		sensMarche = 'gauche';
+		sensMarche = 'droite';
+		if(position['x']%10 == 0){
+			if(bgp>3){
+				bgp = 1;
+			}else{
+				bgp += 1;
+			}
+		}
 	}
 	else if(limite.width != null && position['x']<0 && sens == false){
 		sens = true
+		sensMarche = 'droite';
+		if(position['x']%10 == 0){
+			if(bgp>3){
+				bgp = 1;
+			}else{
+				bgp += 1;
+			}
+		}
 	}else{
 		position['x'] -= 1;
-		sensMarche = 'droite';
+		sensMarche = 'gauche';
+		if(position['x']%10 == 0){
+			if(bgp>3){
+				bgp = 1;
+			}else{
+				bgp += 1;
+			}
+		}
 	}
 	sio.sockets.emit('movement',position,bgp,sensMarche);
 	return position;
