@@ -5,10 +5,7 @@ html
 		link(rel='stylesheet', href='/stylesheets/reset.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-	body
-		div.container
-			div.upstairs
-			div.downstairs
-			div.ladder
 		script(src='http://127.1.1.1:3000/socket.io/socket.io.js')
 		script(src='/javascripts/main.js')
+	body
+		block content

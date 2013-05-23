@@ -7,9 +7,8 @@ var express = require('express')
 	, routes = require('./routes')
 	, http = require('http')
 	, io = require('socket.io')
-	, path = require('path');
-var ia = require('./IA/index.js');
-var perso = new ia();
+	, path = require('path')
+	, ia = require('./IA/index.js');
 var app = express();
 
 // all environments
@@ -37,4 +36,5 @@ httpServer = http.createServer(app).listen(app.get('port'), function(){
 var sio = io.listen(httpServer);
 sio.set('log level', 1);
 
-perso.init(sio);
+var iai = new ia();
+iai.init(app,sio);

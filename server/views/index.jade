@@ -2,9 +2,21 @@ extends layout
 
 block content
 	nav
-		a(href="/")
-			img(src="http://cazingaultier.com/images/logo.png")
+		ul
+			li
+				a(href='#bedRoom') BEDROOM
+			li
+				a(href='#livingRoom') LIVINGROOM
+			li
+				a(href='#kitchen') KITCHEN
+			li
+				a(href='#bathRoom') BATHROOM
+			li
+				a(href='#backyard') BACKYARD
 	div.container
-		div.upstairs
-		div.downstairs
-		div.perso
+		div.floor#bedRoom
+		div.floor#livingRoom
+		div.ladder
+		div.floor#kitchen
+		div.floor#bathRoom
+		div.floor#backyard

@@ -8,17 +8,11 @@ body {
   background-color: #1b1b1b;
 }
 nav {
-  width: 100%;
-  height: 50px;
-  display: none;
+  width: 100px;
+  height: 100%;
+  position: fixed;
   background-color: #fff;
-}
-nav img {
-  height: 40px;
-  margin: 5px;
-}
-nav a {
-  height: 50px;
+  z-index: 1000;
 }
 div.container {
   min-width: 900px;
@@ -26,8 +20,9 @@ div.container {
   border-right: 10px #fff solid;
   border-left: 10px #fff solid;
   margin: auto;
+  margin-left: 100px;
 }
-div.upstairs {
+div.floor {
   height: 350px;
   border-bottom: 10px #fff solid;
 }
