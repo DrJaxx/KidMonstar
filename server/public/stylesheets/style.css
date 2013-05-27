@@ -5,30 +5,58 @@ html{
 body {
   width: 100%;
   height: 100%;
-  background-color: #1b1b1b;
+  background-color: #aaceff;
 }
 nav {
   width: 100px;
   height: 100%;
   position: fixed;
   background-color: #fff;
-  z-index: 1000;
+  z-index: 10;
 }
 div.container {
   min-width: 900px;
   max-width: 900px;
-  border-right: 10px #fff solid;
-  border-left: 10px #fff solid;
+  border-right: 10px #1b1b1b solid;
+  border-left: 10px #1b1b1b solid;
   margin: auto;
   margin-left: 100px;
 }
+div.container #bedRoom {
+  background-image: url("../images/bedRoom.jpg");
+}
+div.container #livingRoom {
+  background-image: url("../images/livingRoom.jpg");
+}
+div.container #kitchen {
+  background-image: url("../images/kitchen.jpg");
+}
+div.container #bathRoom {
+  background-image: url("../images/bathRoom.jpg");
+}
+div.container #backyard {
+  background-image: url("../images/backyard.jpg");
+}
+div.container .staires {
+  position: absolute;
+  width: 100px;
+  height: 1800px;
+  background-color: #1b1b1b;
+  background-image: url("../images/echelle.png");
+  background-repeat: repeat-y;
+  background-size: 90%;
+  top: 0;
+  left: 1020px;
+}
 div.floor {
   height: 350px;
-  border-bottom: 10px #fff solid;
+  border-bottom: 10px #1b1b1b solid;
+  background-size: 100%;
+  background-position: 0% 97%;
 }
 div.downstairs {
   height: 350px;
-  border-bottom: 10px #fff solid;
+  border-bottom: 10px #1b1b1b solid;
 }
 div.perso {
   position: absolute;
