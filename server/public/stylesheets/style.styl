@@ -7,26 +7,48 @@
 body
 	width: 100%
 	height: 100%
-	background-color: #1b1b1b
+	background-color: #aaceff
 nav
-	width: 100%
-	height: 50px
-	display: none
+	width: 100px
+	height: 100%
+	position:fixed
 	background-color: #fff
-	img
-		height: 40px
-		margin:	5px
-	a
-		height:50px
+	z-index:10
 div.container
-	width:100%
-	height:100%
-div.upstairs
-	height: 48% 
-	border-bottom: 10px #fff solid
+	min-width:900px
+	max-width:900px
+	border-right: 10px #1b1b1b solid
+	border-left: 10px #1b1b1b solid
+	margin:auto
+	margin-left:100px
+	#bedRoom
+		background-image:url(../images/bedRoom.jpg)
+	#livingRoom
+		background-image:url(../images/livingRoom.jpg)
+	#kitchen
+		background-image:url(../images/kitchen.jpg)
+	#bathRoom
+		background-image:url(../images/bathRoom.jpg)
+	#backyard
+		background-image:url(../images/backyard.jpg)
+	.staires
+		position:absolute
+		width:100px
+		height:1800px
+		background-color:#1b1b1b
+		background-image:url(../images/echelle.png)
+		background-repeat: repeat-y
+		background-size:90%
+		top:0
+		left:1020px
+div.floor
+	height: 350px
+	border-bottom: 10px #1b1b1b solid
+	background-size:100%
+	background-position:0% 97%
 div.downstairs
-	height: 48% 
-	border-bottom: 10px #fff solid
+	height: 350px 
+	border-bottom: 10px #1b1b1b solid
 div.perso
 	position: absolute
 	width: 35px
@@ -34,3 +56,14 @@ div.perso
 	background-image:url(../images/perso.png)
 	bottom:52%
 	background-position:8% 67%;
+div.ladder
+	position:absolute
+	height:380px
+	width:40px
+	background-size:100%
+	background-image:url(../images/echelle.png)
+	top:330px
+div.porte
+	position: absolute
+	width:130px
+	height:250px
