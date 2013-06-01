@@ -12,6 +12,8 @@ module.exports = function(){
 			persoCaract = {
 				x:100,
 				y:300,
+				width:35,
+				height:60,
 				etage:1,
 				sens:'droite',
 				opacity:1,

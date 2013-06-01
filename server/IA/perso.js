@@ -103,25 +103,23 @@ module.exports = function(){
 					persoCaract.etage = k;
 				}
 			}
-			console.log(persoCaract.etage)
 		},
-		walkstaires: function(){
-			console.log(parseInt(persoCaract.etage)+1)
+		walkstaires: function(etage){
 			if (persoCaract.etage==1) {
 				down = true;
 				up = false;
-			}else if(persoCaract.etage == 5){
+			}else if(persoCaract.etage > 4){
 				up = true;
 				down = false;
 			}
 			
-			if(down == true || (persoCaract.y < (house.porte[(persoCaract.etage)].y+191) && (Math.round(Math.random()*1000) == 1))){
+			if(etage == null && down == true || (persoCaract.y < (house.porte[(persoCaract.etage)].y+191) && (Math.round(Math.random()*10) == 1))){
 				persoCaract.y += 1;
 				persoCaract.sens = 'haut'
 				if(persoCaract.etage > 4){
 					down = false;
 					up = true; 
-				}else if(persoCaract.y < (house.porte[parseInt(persoCaract.etage)+1].y+190)){
+				}else if(persoCaract.y < (house.porte[parseInt(persoCaract.etage)+1].y+180)){
 					down = true;
 					if(persoCaract.y % 10 == 0){
 						if(bgp>3){
@@ -132,11 +130,10 @@ module.exports = function(){
 					}
 				}else{
 					down = false;
-					persoCaract.sens = 'gauche'
-					this.whichFloorAmI();
-					persoCaract.x = house.porte[(persoCaract.etage)].x;
+					persoCaract = house.goOut();
+					persoCaract.sens = 'gauche';
 				}
-			}else if(up == true || persoCaract.y>(house.porte[(persoCaract.etage)].y+121)){	
+			}else if(etage == null && up == true || persoCaract.y>(house.porte[(persoCaract.etage)].y+131)){	
 				persoCaract.y -= 1;
 				persoCaract.sens = 'bas';
 				if(persoCaract.y>(house.porte[(persoCaract.etage)].y-191)){
@@ -150,11 +147,58 @@ module.exports = function(){
 					} 
 				}else{
 					up = false;
+					persoCaract = house.goOut();
 					persoCaract.sens = 'gauche';
-					this.whichFloorAmI();
-					persoCaract.x = house.porte[(persoCaract.etage)].x;
 				}
-			}else{
+			}else if(etage != null){
+				if(persoCaract.etage > etage){
+					up = false;
+					down = true;
+				}else{
+					down = false;
+					up = true;
+				}
+
+				if(down == true){
+					persoCaract.y += 1;
+					persoCaract.sens = 'haut'
+					if(persoCaract.etage > 4){
+						down = false;
+						up = true; 
+					}else if(persoCaract.y < (house.porte[etage].y+180)){
+						down = true;
+						if(persoCaract.y % 10 == 0){
+							if(bgp>3){
+								bgp = 1;
+							}else{
+								bgp += 1;
+							}
+						}
+					}else{
+						down = false;
+						persoCaract = house.goOut();
+						persoCaract.sens = 'gauche';
+					}
+				}else if(up == true){	
+					persoCaract.y -= 1;
+					persoCaract.sens = 'bas';
+					if(persoCaract.y>(house.porte[etage].y-191)){
+						up = true;
+						if(persoCaract.y % 10 == 0){
+							if(bgp>3){
+								bgp = 1;
+							}else{
+								bgp += 1;
+							}
+						} 
+					}else{
+						up = false;
+						persoCaract = house.goOut();
+						persoCaract.sens = 'gauche';
+					}
+				}
+			}
+			else{
 				return false;
 			}
 		},
@@ -181,14 +225,14 @@ module.exports = function(){
 				up = false;
 			}
 		},
-		goTo:function(){
+		goTo:function(etage,action){
 
 		},
 		go: function(){
 			that = this;
 			setInterval(function(){
 				if(persoCaract.sens == 'haut' || persoCaract.sens == 'bas' || (Math.round(Math.random()*10) == 1) ){
-					that.goToStaires();
+					that.goToStaires(5);
 				}else if((Math.round(Math.random()*1000) == 9 ) || stop === true){
 					that.stop();
 				}else{

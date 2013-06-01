@@ -45,7 +45,15 @@ module.exports = function(){
 			}
 		},
 		goOut: function(){
-
+			for(k in house.porte){
+				if(persoCaract.y > house.porte[k].y){
+					persoCaract.etage = k;
+				}
+			}
+			persoCaract.x = house.porte[(persoCaract.etage)].x;
+			persoCaract.y = house.porte[(persoCaract.etage)].height + house.porte[(persoCaract.etage)].y - persoCaract.height;
+			console.log(persoCaract.etage)
+			return persoCaract;
 		},
 		test: function(){
 		}
