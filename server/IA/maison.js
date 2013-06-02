@@ -8,31 +8,31 @@ module.exports = function(){
 		porte: {
 			1:{
 				x:555,
-				y:110,
+				y:100,
 				width:130,
 				height:250
 			},
 			2:{
 				x:843,
-				y:470,
+				y:460,
 				width:130,
 				height:250,
 			},
 			3:{
 				x:648,
-				y:830,
+				y:820,
 				width:130,
 				height:250
 			},
 			4:{
 				x:864,
-				y:1190,
+				y:1180,
 				width:130,
 				height:250
 			},
 			5:{
 				x:845,
-				y:1550,
+				y:1540,
 				width:130,
 				height:250
 			}

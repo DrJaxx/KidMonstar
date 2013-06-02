@@ -135,6 +135,7 @@ module.exports = function(){
 					persoCaract.sens = 'gauche'
 					this.whichFloorAmI();
 					persoCaract.x = house.porte[(persoCaract.etage)].x;
+					persoCaract.y = house.porte[(persoCaract.etage)].y + house.porte[(persoCaract.etage)].height - persoCaract.height;
 				}
 			}else if(up == true || persoCaract.y>(house.porte[(persoCaract.etage)].y+121)){	
 				persoCaract.y -= 1;
@@ -153,6 +154,7 @@ module.exports = function(){
 					persoCaract.sens = 'gauche';
 					this.whichFloorAmI();
 					persoCaract.x = house.porte[(persoCaract.etage)].x;
+					persoCaract.y = house.porte[(persoCaract.etage)].y + house.porte[(persoCaract.etage)].height - persoCaract.height;
 				}
 			}else{
 				return false;
