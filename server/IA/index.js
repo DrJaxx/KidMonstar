@@ -51,8 +51,13 @@ module.exports = function(){
 			sio = sio;
 			sio.sockets.on('connection', function(socket){
 				console.log('New user has connect!');
-				sio.sockets.emit('porte', house.porte);
 			})
+			setInterval(function(){
+				// perso.goAround();
+				perso.goAround();
+				house.sync(persoCaract);
+				io.sockets.emit('movement',persoCaract,bgp);
+			},10)
 			perso.init(sio,persoCaract);
 		}
 	}

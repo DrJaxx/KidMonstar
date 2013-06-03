@@ -1,18 +1,32 @@
 extends layout
 
 block content
-	nav
-		ul
+	div#sideBar
+		div#meteo
+			div#hour
+			div#temp
+				p Ext
+				div#test
+				p Int
+				div#weatherIn
+			div#clim R&eacute;gulateur : 
+				span#climTemp
+				ul
+					li
+						a#Plus(href="#")
+					li
+						a#Moins(href="#")
+		ul.menu
 			li
-				a(href='#bedRoom') BEDROOM
+				a.active(href='#bedRoom')
 			li
-				a(href='#livingRoom') LIVINGROOM
+				a(href='#livingRoom')
 			li
-				a(href='#kitchen') KITCHEN
+				a(href='#kitchen')
 			li
-				a(href='#bathRoom') BATHROOM
+				a(href='#bathRoom')
 			li
-				a(href='#backyard') BACKYARD
+				a(href='#backyard')
 	div.container
 		div.floor#bedRoom
 		div.floor#livingRoom
